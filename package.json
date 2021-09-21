@@ -9,7 +9,7 @@
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
     "build": "npx quasar build -m ssr; npm install --save vue-uuid",
-    "start": "cd dist/ssr; npm i; npm start;" 
+    "start": "cd dist/ssr; npm i; npm start; quasar dev" 
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.22",
