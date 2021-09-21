@@ -7,7 +7,8 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "start" : "quasar dev"
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.22",
