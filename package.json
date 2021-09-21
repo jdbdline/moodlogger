@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "build": "npx quasar build -m ssr",
+    "build": "npx quasar build -m ssr; npm install --save vue-uuid",
     "start": "cd dist/ssr; npm i; npm start" 
   },
   "dependencies": {
