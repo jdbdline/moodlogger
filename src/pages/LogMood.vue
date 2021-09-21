@@ -258,7 +258,7 @@ import { date } from 'quasar'
 import Localbase from 'localbase'
 import { useQuasar } from 'quasar'
 import axios from 'axios'
-import { uuid } from 'vue-uuid'
+import { v4 as uuidv4 } from 'uuid';
 import { Geolocation } from '@capacitor/geolocation'
 
 
@@ -341,7 +341,7 @@ export default defineComponent({
           let formData = new FormData();
    
 
-          formData.append('id',uuid.v1());
+          formData.append('id',uuidv4());
           formData.append('score',this.newScore);
           formData.append('note',this.newNote);
           formData.append('meal',this.newMeal);
