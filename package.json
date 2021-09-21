@@ -8,9 +8,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "build": "yarn global add @quasar/cli && quasar build ",
-    "start" : "quasar dev",
-    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build && quasar dev"
+    "build": "npx quasar build -m ssr",
+    "start": "cd dist/ssr; npm i; npm start" 
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.22",
