@@ -1,0 +1,56 @@
+{
+  "name": "moodlogger",
+  "version": "0.0.1",
+  "description": "log moods",
+  "productName": "Mood Logger",
+  "author": "jedeye <jdbdline@gmail.com>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ./",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@amcharts/amcharts4": "^4.10.22",
+    "@azure/core-http": "^2.2.0",
+    "@azure/msal-browser": "^2.17.0",
+    "@azure/storage-blob": "^12.8.0",
+    "@capacitor/camera": "^1.1.0",
+    "@capacitor/core": "^3.2.3",
+    "@capacitor/geolocation": "^1.1.0",
+    "@ionic/pwa-elements": "^3.0.2",
+    "@quasar/extras": "^1.0.0",
+    "apexcharts": "^3.28.1",
+    "axios": "^0.21.4",
+    "core-js": "^3.6.5",
+    "localbase": "^0.7.5",
+    "quasar": "^2.0.0",
+    "tiny-emitter": "^2.1.0",
+    "vue-apexcharts": "^1.6.2",
+    "vue3-apexcharts": "^1.4.1",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.13.14",
+    "@quasar/app": "^3.0.0",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^7.0.0",
+    "eslint-webpack-plugin": "^2.4.0"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 12.22.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

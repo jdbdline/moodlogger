@@ -1,0 +1,392 @@
+<template>
+    <div class="q-pa-md ">
+        <div class="row">
+          <div class="col">
+            <h7>
+              How are feeling now?
+            </h7>
+          </div>
+         </div> 
+        <div class="row">
+          <div class="col">
+      
+            <h9>
+              From (-5 to 5)
+            </h9>
+            </div>
+         </div> 
+      
+          <div class="row">
+            <div class="col">
+               <br>
+            </div>
+         </div> 
+      
+        <div class="row">
+          <div class="col">   
+            <div class="">
+              <div class="q-gutter-sm">
+                <q-radio dense v-model="newScore" val="-5" label="-5" />
+                <q-radio dense v-model="newScore" val="-4" label="-4" />
+                <q-radio dense v-model="newScore" val="-3" label="-3" />
+                <q-radio dense v-model="newScore" val="-2" label="-2" />
+                <q-radio dense v-model="newScore" val="-1" label="-1" />
+                <q-radio dense v-model="newScore" val="0" label="0" />
+                <q-radio dense v-model="newScore" val="1" label="1" />
+                <q-radio dense v-model="newScore" val="2" label="2" />
+                <q-radio dense v-model="newScore" val="3" label="3" />
+                <q-radio dense v-model="newScore" val="4" label="4" />
+                <q-radio dense v-model="newScore" val="5" label="5" />
+              </div>
+              <div class="q-px-sm q-pt-sm">
+                Your selection is: <strong>{{ newScore }}</strong>
+              </div>
+            </div>
+          </div>
+        </div> 
+        
+         <div class="row">
+            <div class="col">
+               <br>
+            </div>
+         </div> 
+      
+        <div class="row">
+          <div class="col">
+            <q-input 
+            v-model="newNote"
+            square
+            placeholder="Describe Mood" 
+            hint="How are you feeling?" 
+            bg-color="white"
+            class="col"
+            dense />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <q-checkbox v-model="newMeal" label="Did you have a meal recently?" color="teal" />
+          </div>
+            </div>
+            <div class="row">
+          <div class="col">
+            <q-checkbox v-model="newMedication" label="Did you take your medication recently?" color="teal" />
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+          <div class="col"> 
+            <div class="q-pa-md q-gutter-sm ">
+              <q-btn 
+                color="deep-orange" 
+                glossy 
+                label="Log Mood"
+                @click="addMood" 
+                @keyup.enter="addMood"
+              />
+            </div>
+          </div>
+        </div>
+  </div>
+
+  <q-page class="bg-grey-3 column ">
+
+      <div class="q-pa-md q-gutter-sm">
+        <h5>
+          Previous Entries
+        </h5> 
+      </div>
+
+        <q-list dense padding >
+          <q-item
+            v-for="( mood , index) in moods"
+            :key="mood.score"
+            seperator
+            class ="ml-row"
+            bordered
+          >   
+            <div class="q-pa-sm  ">
+              
+              <div class="row">
+                <div class="col" style="font-size:20px;">
+                   Log Entry #{{ index + 1 }} 
+                </div>
+                <div class="col" style="text-align:right;padding-top:5px;">
+                    {{ mood.date }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">                  
+                  <div class="q-pa-md q-gutter-sm col">      
+                    <q-radio dense v-model="mood.score" val="-5" label="-5" />
+                    <q-radio dense v-model="mood.score" val="-4" label="-4" />
+                    <q-radio dense v-model="mood.score" val="-3" label="-3" />
+                    <q-radio dense v-model="mood.score" val="-2" label="-2" />
+                    <q-radio dense v-model="mood.score" val="-1" label="-1" />
+                    <q-radio dense v-model="mood.score" val="0" label="0" />
+                    <q-radio dense v-model="mood.score" val="1" label="1" />
+                    <q-radio dense v-model="mood.score" val="2" label="2" />
+                    <q-radio dense v-model="mood.score" val="3" label="3" />
+                    <q-radio dense v-model="mood.score" val="4" label="4" />
+                    <q-radio dense v-model="mood.score" val="5" label="5" />
+                    
+                    </div>
+                  </div>
+                </div>
+            <div>
+           
+            <div class="row">
+              <div class="col">
+
+                </div>
+              </div>
+             </div> 
+
+          <div class="q-pa-md row" >
+            <div class="q-gutter-md col">
+              Mood Note             
+            </div>
+            <div class="q-gutter-md col col-right">
+               {{ mood.note }}              
+            </div>
+          </div>
+
+          <div class="q-pa-md row" >
+            <div class="q-gutter-md col">
+              Did you have a meal recently?              
+            </div>
+            <div class="q-gutter-md col col-right">
+               {{ mood.meal=='true'?'yes':'No' }}              
+            </div>
+          </div>
+
+
+          <div class="q-pa-md row" >
+            <div class="q-gutter-md col">
+              Did you take your medication recently?
+              
+            </div>
+            <div class="q-gutter-md col col-right">
+              
+                  {{ mood.medication=='true'?'yes':'No' }} 
+              
+            </div>
+          </div>
+
+           <div class="q-pa-md row" >
+            <div class="q-gutter-md col ">
+              Degrees Celcius Outside
+              
+            </div>
+            <div class="q-gutter-md col col-right">
+               {{ mood.celcius }}
+              
+            </div>
+          </div>
+
+           <div class="q-pa-md row" >
+            
+            <div class="q-gutter-md col ">
+                Weather Note:               
+              
+            </div>
+            <div class="q-gutter-md col col-right">
+                {{ mood.weatherNote }}
+                
+            </div>
+ 
+          </div>
+
+           <div class="q-pa-md row" >
+            <div class="q-gutter-md col ">
+                Location:
+            </div>
+             <div class="q-gutter-md col col-right">
+                {{ mood.locationName }}
+            </div>
+          </div>
+
+          <div class="q-pa-md row" >
+            <div class="q-gutter-md col ">
+                Wind Speed KPH:
+            </div>
+             <div class="q-gutter-md col col-right">
+                {{ mood.wind_kph }} km/h
+            </div>
+          </div>
+
+        
+
+            <br>
+            </div>
+          </q-item>
+
+      </q-list>
+  
+      
+  </q-page>
+
+  
+</template>
+<style lang="sass" scoped>
+.flex-break
+  flex: 1 0 100% !important
+  height: 0 !important
+
+.example-container
+  .example-cell
+    margin: 1px
+    padding: 4px 8px
+    box-shadow: inset 0 0 0 2px $grey-6
+
+.col-right
+  text-align: right
+
+.ml-row:nth-child(odd)
+  background-color: white
+
+   
+</style>
+
+<script>
+import { defineComponent } from 'vue';
+import { ref } from 'vue';
+import { date } from 'quasar'
+import Localbase from 'localbase'
+import { useQuasar } from 'quasar'
+import axios from 'axios'
+import { uuid } from 'vue-uuid'
+import { Geolocation } from '@capacitor/geolocation'
+
+
+let db = new Localbase('db');
+
+export default defineComponent({
+  setup () {
+    return {
+      mood: ref(0),
+      meal: ref(false),
+      medication: ref(false),
+      
+    }
+  },
+  data(){
+    return {
+      newScore: '',
+      newNote: '',
+      newMeal: ref(false),
+      newMedication: ref(false),
+      $q : useQuasar(),
+      moods :[],
+    }
+      
+  },
+  methods:{
+      async determineGps(){ 
+          let result = {};
+          let newPosition = await Geolocation.getCurrentPosition();
+          result = newPosition.coords.latitude+','+newPosition.coords.longitude;
+          return result;
+      },
+
+      async determineCurrentWheather(latlong){ 
+          const api = await axios.create({ baseURL: 'http://192.168.1.89:3000/getWeather?q='+ latlong}).get('/');
+          let returnArray = {
+                    'celcius' : api.data.current.temp_c,
+                    'weatherNote' : api.data.current.condition.text,
+                    'locationName' : api.data.location.name,
+                    'wind_kph' : api.data.current.wind_kph,
+                  };                
+
+          return returnArray;      
+      },
+      async getWeatherLocation(){
+            let gps = await this.determineGps();            
+            let current_weather = await this.determineCurrentWheather(gps);
+            console.log('die weer',current_weather);
+            return current_weather;
+      } , 
+      getMood(){
+
+          const api = axios.create({ baseURL: 'http://192.168.1.89:3000/getMoods' });          
+          api.get('/')
+          .then(
+              response => {
+                console.log('response' , response)
+                this.moods = response.data;
+              }).catch(err=>{
+                 console.log('response' , err)
+              
+              });
+
+      },
+     async addMood(){
+        let timeStamp = Date.now();
+        let formattedString = date.formatDate(timeStamp, 'dddd D MMMM hh:mm');
+        
+        let mood = [{
+          score       : this.newScore,
+          note        : this.newNote,
+          meal        : this.newMeal,
+          medication  : this.newMedication,
+          date        : formattedString,
+          timeStamp   : timeStamp,
+          done        : false
+        }];
+
+
+          let formData = new FormData();
+   
+
+          formData.append('id',uuid.v1());
+          formData.append('score',this.newScore);
+          formData.append('note',this.newNote);
+          formData.append('meal',this.newMeal);
+          formData.append('medication',this.newMedication);
+          formData.append('date',formattedString);
+          formData.append('timeStamp',timeStamp);
+
+          try {
+              let api_data =  await this.getWeatherLocation();
+              console.log('inside',api_data);
+              formData.append('celcius',api_data['celcius'])
+              formData.append('weatherNote',api_data['weatherNote'])
+              formData.append('locationName',api_data['locationName'])
+              formData.append('wind_kph',api_data['wind_kph'])
+              
+            } catch (error) {
+              throw new Error(error);
+            }
+        
+
+          const api = axios.create({ baseURL: 'http://192.168.1.89:3000/createMood' });
+                    
+          api.post('/',formData)
+          .then(
+              response => {
+                console.log('response' , response)
+            
+              }).catch(err=>{
+                 console.log('response' , err)
+              
+              });
+        this.newScore = '';
+        this.newNote  = '';
+        this.newMeal  = ref(false);
+        this.newMedication  = ref(false);    
+       
+        this.$q.notify('Mood recorded, refresh to see mood history');
+ 
+      }
+  },
+  created() {
+    this.getMood();
+  }
+})
+
+
+
+</script>
