@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "build": "npx quasar build",
+    "build": "yarn global add @quasar/cli;quasar build --mode ssr",
     "start": "node server.js",
     "heroku-postbuild": "yarn && yarn build"
   },
