@@ -108,7 +108,7 @@ module.exports = configure(function (ctx) {
 
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
-
+      port: process.env.PORT ,
                       // (gets superseded if process.env.PORT is specified at runtime)
 
       maxAge: 1000 * 60 * 60 * 24 * 30,
