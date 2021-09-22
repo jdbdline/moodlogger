@@ -9,7 +9,7 @@
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
     "build": "npx quasar build --debug ",
-    "start": "quasar serve" 
+    "start": "npx quasar serve" 
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.22",
