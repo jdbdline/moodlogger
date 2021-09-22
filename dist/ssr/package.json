@@ -1,0 +1,58 @@
+{
+  "name": "moodlogger",
+  "version": "0.0.2",
+  "description": "log moods",
+  "author": "jedeye <jdbdline@gmail.com>",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+	"build": "yarn"
+  },
+  "dependencies": {
+    "@amcharts/amcharts4": "4.10.22",
+    "@azure/core-http": "2.2.0",
+    "@azure/msal-browser": "2.17.0",
+    "@azure/storage-blob": "12.8.0",
+    "@capacitor/camera": "1.1.0",
+    "@capacitor/core": "3.2.3",
+    "@capacitor/geolocation": "1.1.0",
+    "@ionic/pwa-elements": "3.0.2",
+    "apexcharts": "3.28.3",
+    "axios": "0.21.4",
+    "connect-history-api-fallback": "1.6.0",
+    "core-js": "3.18.0",
+    "express": "^4.0.0",
+    "localbase": "0.7.5",
+    "quasar": "2.1.0",
+    "serve-static": "1.14.1",
+    "tiny-emitter": "2.1.0",
+    "vue-apexcharts": "1.6.2",
+    "vue3-apexcharts": "1.4.1",
+    "compression": "^1.0.0",
+    "vue": "3.2.4",
+    "@vue/server-renderer": "3.2.4",
+    "@vue/compiler-sfc": "3.2.4",
+    "@quasar/ssr-helpers": "2.1.1",
+    "vue-router": "4.0.11",
+    "@quasar/babel-preset-app": "2.0.1"
+  },
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x",
+    "yarn": "1.x"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "quasar": {
+    "ssr": true
+  }
+}
