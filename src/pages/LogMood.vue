@@ -2,16 +2,16 @@
     <div class="q-pa-md ">
         <div class="row">
           <div class="col">
-            <h7>
-              How are feeling now?
-            </h7>
+            <h5>
+              How are doing?
+            </h5>
           </div>
          </div> 
         <div class="row">
           <div class="col">
       
             <h9>
-              From (-5 to 5)
+              If you can give your mood a score from (-5 to 5)
             </h9>
             </div>
          </div> 
@@ -258,7 +258,6 @@ import { date } from 'quasar'
 import Localbase from 'localbase'
 import { useQuasar } from 'quasar'
 import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid';
 import { Geolocation } from '@capacitor/geolocation'
 
 
@@ -293,7 +292,7 @@ export default defineComponent({
       },
 
       async determineCurrentWheather(latlong){ 
-          const api = await axios.create({ baseURL: 'http://192.168.1.89:3000/getWeather?q='+ latlong}).get('/');
+          const api = await axios.create({ baseURL: 'https://moodbackend.herokuapp.com/getWeather?q='+ latlong}).get('/');
           let returnArray = {
                     'celcius' : api.data.current.temp_c,
                     'weatherNote' : api.data.current.condition.text,
@@ -311,7 +310,7 @@ export default defineComponent({
       } , 
       getMood(){
 
-          const api = axios.create({ baseURL: 'http://192.168.1.89:3000/getMoods' });          
+          const api = axios.create({ baseURL: 'https://moodbackend.herokuapp.com/getMoods' });          
           api.get('/')
           .then(
               response => {
@@ -323,6 +322,13 @@ export default defineComponent({
               });
 
       },
+      
+     uuidv4c() {
+        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+          (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+      },
+
      async addMood(){
         let timeStamp = Date.now();
         let formattedString = date.formatDate(timeStamp, 'dddd D MMMM hh:mm');
@@ -341,7 +347,7 @@ export default defineComponent({
           let formData = new FormData();
    
 
-          formData.append('id',uuidv4());
+          formData.append('id',this.uuidv4c());
           formData.append('score',this.newScore);
           formData.append('note',this.newNote);
           formData.append('meal',this.newMeal);
@@ -362,7 +368,7 @@ export default defineComponent({
             }
         
 
-          const api = axios.create({ baseURL: 'http://192.168.1.89:3000/createMood' });
+          const api = axios.create({ baseURL: 'https://moodbackend.herokuapp.com/createMood' });
                     
           api.post('/',formData)
           .then(

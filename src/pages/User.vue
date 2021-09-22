@@ -154,7 +154,7 @@ export default defineComponent({
 
     determineCurrentWheather(){ 
       
-          const api = axios.create({ baseURL: 'http://192.168.1.89:3000/getWeather?q='+ this.newGpsPosition})
+          const api = axios.create({ baseURL: 'https://moodbackend.herokuapp.com/getWeather?q='+ this.newGpsPosition})
           .get('/')
           .then(
               response => {
