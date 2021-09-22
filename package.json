@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "build": "npx quasar build --debug ",
+    "build": "npx quasar build -m ssr --debug ",
     "start": "npx quasar serve" 
   },
   "dependencies": {
