@@ -8,8 +8,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "build": "npx quasar build -m ssr; npm install --save vue-uuid",
-    "start": "cd dist/ssr; npm i; npm start; build -m ssr -d; node index.js" 
+    "build": "npx quasar build -m ssr",
+    "start": "cd dist/ssr; npm i; npm start" 
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.22",
