@@ -1,6 +1,6 @@
 {
   "name": "moodlogger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "log moods",
   "productName": "Mood Logger",
   "author": "jedeye <jdbdline@gmail.com>",
@@ -8,8 +8,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "build": "npx quasar build ",
-    "start": "npm start" 
+    "build": "npx quasar build -m pwa --debug ",
+    "start": "quasar serve" 
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.22",
