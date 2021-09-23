@@ -11,7 +11,7 @@
           <div class="col">
       
             <h9>
-              If you can give your mood a score from (-5 to 5)
+              You can slide your mood to a score from (-5 to 5)
             </h9>
             </div>
          </div> 
@@ -23,25 +23,24 @@
          </div> 
       
         <div class="row">
+           <div class="q-gutter-sm col">
+                
+
+                  <q-slider
+                  v-model="newScore"
+                  :min="-5"
+                  :max="5"
+                  :step="1"
+                  label
+                  label-always
+                  color="light-green"
+                />
+              </div>
+              
           <div class="col">   
-            <div class="">
-              <div class="q-gutter-sm">
-                <q-radio dense v-model="newScore" val="-5" label="-5" />
-                <q-radio dense v-model="newScore" val="-4" label="-4" />
-                <q-radio dense v-model="newScore" val="-3" label="-3" />
-                <q-radio dense v-model="newScore" val="-2" label="-2" />
-                <q-radio dense v-model="newScore" val="-1" label="-1" />
-                <q-radio dense v-model="newScore" val="0" label="0" />
-                <q-radio dense v-model="newScore" val="1" label="1" />
-                <q-radio dense v-model="newScore" val="2" label="2" />
-                <q-radio dense v-model="newScore" val="3" label="3" />
-                <q-radio dense v-model="newScore" val="4" label="4" />
-                <q-radio dense v-model="newScore" val="5" label="5" />
-              </div>
-              <div class="q-px-sm q-pt-sm">
-                Your selection is: <strong>{{ newScore }}</strong>
-              </div>
-            </div>
+            
+             
+            
           </div>
         </div> 
         
@@ -61,6 +60,11 @@
             bg-color="white"
             class="col"
             dense />
+          </div>
+          <div class="col">   
+            
+             
+            
           </div>
         </div>
 
@@ -132,23 +136,14 @@
                     {{ mood.date }}
                 </div>
               </div>
-              <div class="row">
-                <div class="col">                  
-                  <div class="q-pa-md q-gutter-sm col">      
-                    <q-radio dense v-model="mood.score" val="-5" label="-5" />
-                    <q-radio dense v-model="mood.score" val="-4" label="-4" />
-                    <q-radio dense v-model="mood.score" val="-3" label="-3" />
-                    <q-radio dense v-model="mood.score" val="-2" label="-2" />
-                    <q-radio dense v-model="mood.score" val="-1" label="-1" />
-                    <q-radio dense v-model="mood.score" val="0" label="0" />
-                    <q-radio dense v-model="mood.score" val="1" label="1" />
-                    <q-radio dense v-model="mood.score" val="2" label="2" />
-                    <q-radio dense v-model="mood.score" val="3" label="3" />
-                    <q-radio dense v-model="mood.score" val="4" label="4" />
-                    <q-radio dense v-model="mood.score" val="5" label="5" />
-                    
-                    </div>
+                <div class="row">
+                  <div class=" col">                  
+                    Mood Score
                   </div>
+
+                   <div class="col col-right">   
+                     {{ mood.score }}
+                    </div>
                 </div>
             <div>
            
@@ -318,7 +313,7 @@ export default defineComponent({
   },
   data(){
     return {
-      newScore: '',
+      newScore: '0',
       newNote: '',
       newMeal: ref(false),
       newMedication: ref(false),
