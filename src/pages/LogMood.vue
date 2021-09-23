@@ -3,7 +3,7 @@
         <div class="row">
           <div class="col">
             <h5>
-              How are doing?
+              How are you doing?
             </h5>
           </div>
          </div> 
@@ -73,6 +73,20 @@
           <div class="col">
             <q-checkbox v-model="newMedication" label="Did you take your medication recently?" color="teal" />
           </div>
+          
+
+        </div>
+
+        <div class="col">
+          <q-checkbox v-model="newRest" label="Did you rest enough?" color="teal" />
+        </div>
+
+        <div class="col">
+          <q-checkbox v-model="newWater" label="Did you drink enough water?" color="teal" />
+        </div>
+  
+        <div class="col">
+          <q-checkbox v-model="newComfort" label="Is your body comfortable?" color="teal" />
         </div>
 
         
@@ -176,6 +190,33 @@
             </div>
           </div>
 
+          <div class="q-pa-md row" >
+            <div class="q-gutter-md col">
+              Are you well rested?
+            </div>
+            <div class="q-gutter-md col col-right">          
+                  {{ mood.rest=='true'?'yes':'No' }}
+            </div>
+          </div>
+
+          <div class="q-pa-md row" >
+            <div class="q-gutter-md col">
+              Have you drank water recently
+            </div>
+            <div class="q-gutter-md col col-right">          
+                  {{ mood.water=='true'?'yes':'No' }}
+            </div>
+          </div>
+
+          <div class="q-pa-md row" >
+            <div class="q-gutter-md col">
+              Is your body comfortable?
+            </div>
+            <div class="q-gutter-md col col-right">          
+                  {{ mood.comfort=='true'?'yes':'No' }}
+            </div>
+          </div>
+
            <div class="q-pa-md row" >
             <div class="q-gutter-md col ">
               Degrees Celcius Outside
@@ -269,6 +310,9 @@ export default defineComponent({
       mood: ref(0),
       meal: ref(false),
       medication: ref(false),
+      rest: ref(false),
+      water: ref(false),
+      comfort: ref(false),
       
     }
   },
@@ -278,6 +322,9 @@ export default defineComponent({
       newNote: '',
       newMeal: ref(false),
       newMedication: ref(false),
+      newRest: ref(false),
+      newWater: ref(false),
+      newComfort: ref(false),
       $q : useQuasar(),
       moods :[],
     }
@@ -338,6 +385,9 @@ export default defineComponent({
           note        : this.newNote,
           meal        : this.newMeal,
           medication  : this.newMedication,
+          rest        : this.newRest,
+          water       : this.newWater,
+          comfort     : this.newComfort,
           date        : formattedString,
           timeStamp   : timeStamp,
           done        : false
@@ -352,6 +402,9 @@ export default defineComponent({
           formData.append('note',this.newNote);
           formData.append('meal',this.newMeal);
           formData.append('medication',this.newMedication);
+          formData.append('rest',this.newRest);
+          formData.append('water',this.newWater);
+          formData.append('comfort',this.newComfort);
           formData.append('date',formattedString);
           formData.append('timeStamp',timeStamp);
 
@@ -382,7 +435,10 @@ export default defineComponent({
         this.newScore = '';
         this.newNote  = '';
         this.newMeal  = ref(false);
-        this.newMedication  = ref(false);    
+        this.newMedication  = ref(false); 
+        this.newRest  = ref(false); 
+        this.newWater  = ref(false); 
+        this.newComfort  = ref(false);    
        
         this.$q.notify('Mood recorded, refresh to see mood history');
  

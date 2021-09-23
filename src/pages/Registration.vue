@@ -30,19 +30,6 @@
               </q-input>
             </q-form>
           </q-card-section>
-          <q-card-section>
-            <div class="text-center q-pa-md q-gutter-md">
-              <q-btn round color="indigo-7">
-                <q-icon name="fab fa-facebook-f" size="1.2rem" />
-              </q-btn>
-              <q-btn round color="red-8">
-                <q-icon name="fab fa-google-plus-g" size="1.2rem" />
-              </q-btn>
-              <q-btn round color="light-blue-5">
-                <q-icon name="fab fa-twitter" size="1.2rem" />
-              </q-btn>
-            </div>
-          </q-card-section>
           <q-card-actions class="q-px-lg">
             <q-btn unelevated size="lg" color="purple-4" class="full-width text-white" label="Sign In" />
           </q-card-actions>
@@ -81,7 +68,13 @@
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-lg">
-            <q-btn unelevated size="lg" color="purple-4" class="full-width text-white" label="Get Started" />
+            <q-btn 
+              unelevated size="lg" 
+              color="purple-4" 
+              class="full-width text-white" 
+              clickable
+              @click = 'addUser'
+              label="Get Started" />
           </q-card-actions>
           <q-card-section class="text-center q-pa-sm">
             <p class="text-grey-6">Return to login</p>
@@ -93,6 +86,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Login',
   data () {
@@ -101,6 +96,43 @@ export default {
       username: '',
       password: ''
     }
+  },
+  methods:{
+    registerUser(){
+      alert('register user');
+    },
+    uuidv4c() {
+        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+          (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+      },
+   
+    async addUser(){
+      let formData = new FormData();
+
+      formData.append('id',this.uuidv4c());
+      formData.append('username',this.username);
+      formData.append('password',this.getHash(this.password));
+      formData.append('email',this.email);
+      console.log(formData);
+      
+
+      const api = axios.create({ baseURL: 'https://moodbackend.herokuapp.com/createUser' });
+                
+      api.post('/',formData)
+      .then(
+          response => {
+            console.log('response' , response)
+        
+          }).catch(err=>{
+              console.log('response' , err)
+          
+          });
+      
+    
+      alert('add user');
+
+      }
   }
 }
 </script>
