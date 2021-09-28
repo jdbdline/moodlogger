@@ -35,13 +35,8 @@
                   label-always
                   color="light-green"
                 />
-              </div>
-              
-          <div class="col">   
-            
-             
-            
-          </div>
+              </div>              
+       
         </div> 
         
          <div class="row">
@@ -60,11 +55,6 @@
             bg-color="white"
             class="col"
             dense />
-          </div>
-          <div class="col">   
-            
-             
-            
           </div>
         </div>
 

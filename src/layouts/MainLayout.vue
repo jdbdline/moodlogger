@@ -1,32 +1,28 @@
 <template>
   <q-layout view="lHh Lpr lFf" >
-    <q-header elevated>
+    <q-header
+        v-if="loggedIn"
+     elevated>
       <q-toolbar>
        <q-btn
-              flat
-              dense
-              round
-              clickable
-              @click = "toggleLeftDrawer"
-              icon="menu"
-              />
+        flat
+        dense
+        round
+        clickable
+        icon="menu"
+        />
+      <div class = "q-px-sm q-pt-sm q-mb-sm">
+        <div class="row">
+          <div class="col">
+            <h3 class="col">
 
-         
 
-       
-        <div class = "q-px-sm q-pt-sm q-mb-sm">
-          <div class="row">
-            <div class="col">
-              <h3 class="col">
-                  Mood Logger
-              </h3>
-              
-            </div>
-        </div>
-        
-      
-
+                Mood Logger
+            </h3>              
+          </div>
       </div>
+
+    </div>
       </q-toolbar>
       
       <q-img 
@@ -151,14 +147,17 @@ export default defineComponent({
 
   setup () {
     
-    let leftDrawerOpen = ref(false)
+    let leftDrawerOpen = ref(false);
+    let loggedIn = ref(true);
 
     return {
-       mood: ref(),
+      mood: ref(),
       leftDrawerOpen,
       toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value
+          leftDrawerOpen.value = !leftDrawerOpen.value
       },
+      loggedIn,
+     
       text: ref(''),
       ph: ref(''),
       $q : useQuasar(),
